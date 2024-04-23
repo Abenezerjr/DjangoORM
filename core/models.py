@@ -24,14 +24,14 @@ class Restaurant(models.Model):
 
 class Rating(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    restaurant=models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+    restaurant=models.ForeignKey(Restaurant,on_delete=models.CASCADE ,related_name="ratings")
     rating=models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return self.rating
+        return str(self.rating)
 
 
 class Sale(models.Model):
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.SET_NULL,null=True)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.SET_NULL,null=True ,related_name='sales')
     income=models.DecimalField(max_digits=10,decimal_places=2)
     datetime=models.DateTimeField(auto_now_add=True)

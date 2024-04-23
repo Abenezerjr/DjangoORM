@@ -1,0 +1,3 @@
+ python manage.py runscript orm_script
+python manage.py shell_plus --print-sql
+connection.queries
